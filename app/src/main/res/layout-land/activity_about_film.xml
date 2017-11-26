@@ -10,8 +10,8 @@
         android:id="@+id/activity_about_film_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp"
         android:background="@color/colorPrimary"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -50,95 +50,103 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_toRightOf="@id/activity_about_film_toolbar_back_image"
             android:gravity="center"
-            android:foregroundGravity="center"
             android:text="Иван​ ​ Васильевич​"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </RelativeLayout>
 
-
-    <ImageView
-        android:id="@+id/activity_about_film_cover_image"
-        android:layout_width="125dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="3:4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_about_film_toolbar"
-        app:layout_constraintVertical_bias="0"
-        tools:layout_height="200dp"
-        tools:layout_width="200dp" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_constraintLeft_toRightOf="@+id/activity_about_film_cover_image"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_about_film_toolbar">
-
-        <TextView
-            android:id="@+id/activity_about_film_original_name_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="#8A000000"
-            android:textSize="16sp"
-            tools:text="Иван​ ​ Васильевич​ ​ меняет​ ​ профессию" />
-
-        <TextView
-            android:id="@+id/activity_about_film_issue_year_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="#DE000000"
-            android:textSize="16sp"
-            tools:text="Год: 1994" />
-
-        <TextView
-            android:id="@+id/activity_about_film_rating_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="#DE000000"
-            android:textSize="16sp"
-            tools:text="Рейтинг: 9.196" />
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingBottom="24dp"
-        android:paddingTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_about_film_cover_image">
+        app:layout_constraintTop_toBottomOf="@id/activity_about_film_toolbar">
 
-        <TextView
-            android:id="@+id/activity_about_film_description_text"
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:textColor="#DE000000"
-            tools:text="Терзаемый​ ​ хронической​ ​ бессонницей​ ​ и ​ ​ отчаянно пытающийся​ ​ вырваться​ ​ из​ ​ мучительно​ ​ скучной​ ​ жизни,​ ​ клерк​ ​ встречает
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/activity_about_film_cover_image"
+                android:layout_width="125dp"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="3:4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                tools:background="#90000000"
+                tools:layout_height="200dp"
+                tools:layout_width="200dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toRightOf="@+id/activity_about_film_cover_image"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:id="@+id/activity_about_film_original_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="#8A000000"
+                    android:textSize="16sp"
+                    tools:text="Иван​ ​ Васильевич​ ​ меняет​ ​ профессию" />
+
+                <TextView
+                    android:id="@+id/activity_about_film_issue_year_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="#DE000000"
+                    android:textSize="16sp"
+                    tools:text="Год: 1994" />
+
+                <TextView
+                    android:id="@+id/activity_about_film_rating_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="#DE000000"
+                    android:textSize="16sp"
+                    tools:text="Рейтинг: 9.196" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/activity_about_film_description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingTop="16dp"
+                android:textColor="#DE000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_about_film_cover_image"
+                tools:text="Терзаемый​ ​ хронической​ ​ бессонницей​ ​ и ​ ​ отчаянно пытающийся​ ​ вырваться​ ​ из​ ​ мучительно​ ​ скучной​ ​ жизни,​ ​ клерк​ ​ встречает
 некоего​ ​ Тайлера​ ​ Дардена,​ ​ харизматического​ ​ торговца​ ​ мылом​ ​ с извращенной​ ​ философией.​ ​ Тайлер​ ​ уверен,​ ​ что​ ​ самосовершенствование​ ​ —
 удел​ ​ слабых,​ ​ а ​ ​ саморазрушение​ ​ — ​ ​ единственное,​ ​ ради​ ​ чего​ ​ стоит​ ​ жить. Пройдет​ ​ немного​ ​ времени,​ ​ и ​ ​ вот​ ​ уже​ ​ главные​ ​ герои​ ​ лупят​ ​ друг​ ​ друга
 почем​ ​ зря​ ​ на​ ​ стоянке​ ​ перед​ ​ баром,​ ​ и ​ ​ очищающий​ ​ мордобой​ ​ доставляет​ ​ им высшее​ ​ блаженство.​ ​ Приобщая​ ​ других​ ​ мужчин​ ​ к ​ ​ простым​ ​ радостям
 физической​ ​ жестокости,​ ​ они​ ​ основывают​ ​ тайный​ ​ Бойцовский​ ​ Клуб,​ ​ который имеет​ ​ огромный​ ​ успех.​ ​ Но​ ​ в ​ ​ концовке​ ​ фильма​ ​ всех​ ​ ждет​ ​ шокирующее
 открытие,​ ​ которое​ ​ может​ ​ привести​ ​ к ​ ​ непредсказуемым​ ​ событиям..." />
+
+        </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

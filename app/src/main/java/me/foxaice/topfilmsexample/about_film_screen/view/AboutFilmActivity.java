@@ -2,6 +2,8 @@ package me.foxaice.topfilmsexample.about_film_screen.view;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
@@ -13,29 +15,56 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import me.foxaice.topfilmsexample.R;
+import me.foxaice.topfilmsexample.main_screen.model.Film;
 
 public class AboutFilmActivity extends Activity {
+    private static final String EXTRA_FILM = "EXTRA_FILM";
+
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+
+    public static void startActivity(Context context, Film film, Bundle bundle) {
+        context.startActivity(new Intent(context, AboutFilmActivity.class)
+                .putExtra(EXTRA_FILM, film), bundle);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_film);
-        ImageView filmCover = findViewById(R.id.activity_about_film_cover_image);
-        TextView originalName = findViewById(R.id.activity_about_film_original_name_text);
-        TextView issueYear = findViewById(R.id.activity_about_film_issue_year_text);
-        TextView rating = findViewById(R.id.activity_about_film_rating_text);
-        TextView description = findViewById(R.id.activity_about_film_description_text);
         initBackButton();
-        Picasso.with(this)
-                .load("https://st.kp.yandex.net/images/film_iphone/iphone360_2360.jpg")
-                .into(filmCover);
-        originalName.setText("Fight Club");
-        issueYear.setText("Год: 1994");
-        rating.setText("Рейтинг: 9.196");
-        description.setText("Терзаемый​ ​ хронической​ ​ бессонницей​ ​ и ​ ​ отчаянно пытающийся​ ​ вырваться​ ​ из​ ​ мучительно​ ​ скучной​ ​ жизни,​ ​ клерк​ ​ встречает некоего​ ​ Тайлера​ ​ Дардена,​ ​ харизматического​ ​ торговца​ ​ мылом​ ​ с извращенной​ ​ философией.​ ​ Тайлер​ ​ уверен,​ ​ что​ ​ самосовершенствование​ ​ — удел​ ​ слабых,​ ​ а ​ ​ саморазрушение​ ​ — ​ ​ единственное,​ ​ ради​ ​ чего​ ​ стоит​ ​ жить. Пройдет​ ​ немного​ ​ времени,​ ​ и ​ ​ вот​ ​ уже​ ​ главные​ ​ герои​ ​ лупят​ ​ друг​ ​ друга почем​ ​ зря​ ​ на​ ​ стоянке​ ​ перед​ ​ баром,​ ​ и ​ ​ очищающий​ ​ мордобой​ ​ доставляет​ ​ им высшее​ ​ блаженство.​ ​ Приобщая​ ​ других​ ​ мужчин​ ​ к ​ ​ простым​ ​ радостям физической​ ​ жестокости,​ ​ они​ ​ основывают​ ​ тайный​ ​ Бойцовский​ ​ Клуб,​ ​ который имеет​ ​ огромный​ ​ успех.​ ​ Но​ ​ в ​ ​ концовке​ ​ фильма​ ​ всех​ ​ ждет​ ​ шокирующее открытие,​ ​ которое​ ​ может​ ​ привести​ ​ к ​ ​ непредсказуемым​ ​ событиям...");
+        loadInfo(getIntent().getExtras());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    private void loadInfo(Bundle extras) {
+        if (extras.containsKey(EXTRA_FILM)) {
+            Film film = (Film) extras.get(EXTRA_FILM);
+            if (film != null) {
+                ImageView filmCover = findViewById(R.id.activity_about_film_cover_image);
+                TextView originalName = findViewById(R.id.activity_about_film_original_name_text);
+                TextView issueYear = findViewById(R.id.activity_about_film_issue_year_text);
+                TextView rating = findViewById(R.id.activity_about_film_rating_text);
+                TextView description = findViewById(R.id.activity_about_film_description_text);
+                TextView header = findViewById(R.id.activity_about_film_toolbar_header_text);
+                Picasso.with(this)
+                        .load((String) film.getImageUrl())
+                        .placeholder(R.drawable.no_poster)
+                        .error(R.drawable.no_poster)
+                        .into(filmCover);
+                header.setText(film.getLocalName());
+                originalName.setText(film.getOriginalName());
+                issueYear.setText(getString(R.string.year, film.getIssueYear()));
+                rating.setText(getString(R.string.rating, film.getRating()));
+                description.setText(film.getDescription());
+            }
+        }
     }
 
     private void initBackButton() {
