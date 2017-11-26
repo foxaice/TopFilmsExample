@@ -75,12 +75,11 @@
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
                 android:layout_marginBottom="8dp"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="3:4"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0"
-                tools:background="#90000000"
                 tools:layout_height="200dp"
                 tools:layout_width="200dp" />
 
@@ -90,6 +89,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
                 android:orientation="vertical"
                 app:layout_constraintLeft_toRightOf="@+id/activity_about_film_cover_image"
                 app:layout_constraintRight_toRightOf="parent">
@@ -124,7 +124,6 @@
                     android:textSize="16sp"
                     tools:text="Рейтинг: 9.196" />
             </LinearLayout>
-
 
             <TextView
                 android:id="@+id/activity_about_film_description_text"
